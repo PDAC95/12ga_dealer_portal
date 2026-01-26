@@ -1,0 +1,57 @@
+@use '../base/variables' as v;
+
+// Custom component styles that can't be easily achieved with Tailwind
+
+.btn-primary {
+  background-color: v.$primary;
+  color: v.$text-white;
+  transition: background-color v.$transition-fast, transform v.$transition-fast;
+
+  &:hover {
+    background-color: v.$primary-hover;
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.card {
+  background-color: v.$surface;
+  border-radius: v.$radius-lg;
+  transition: background-color v.$transition-fast;
+
+  &:hover {
+    background-color: v.$surface-hover;
+  }
+}
+
+// Scrollbar styling
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: v.$background;
+}
+
+::-webkit-scrollbar-thumb {
+  background: v.$surface-hover;
+  border-radius: 4px;
+
+  &:hover {
+    background: v.$text-muted;
+  }
+}
+
+// Focus styles
+:focus-visible {
+  outline: 2px solid v.$primary;
+  outline-offset: 2px;
+}

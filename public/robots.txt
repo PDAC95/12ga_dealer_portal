@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dealer.12gacustoms.ca/sitemap.xml

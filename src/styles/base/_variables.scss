@@ -1,0 +1,34 @@
+// Colors
+$primary: #ff3d24;
+$primary-hover: #e63520;
+$background: #0d0d0d;
+$surface: #1a1a1a;
+$surface-hover: #252525;
+$text-white: #ffffff;
+$text-muted: #888888;
+$success: #28a745;
+$error: #dc3545;
+$warning: #ffc107;
+
+// Breakpoints (match Tailwind)
+$screen-sm: 640px;
+$screen-md: 768px;
+$screen-lg: 1024px;
+$screen-xl: 1280px;
+
+// Spacing
+$spacing-xs: 0.25rem;
+$spacing-sm: 0.5rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+
+// Border radius
+$radius-sm: 0.25rem;
+$radius-md: 0.5rem;
+$radius-lg: 0.75rem;
+$radius-xl: 1rem;
+
+// Transitions
+$transition-fast: 150ms ease;
+$transition-normal: 300ms ease;

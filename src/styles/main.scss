@@ -1,0 +1,7 @@
+@use 'base/reset';
+@use 'base/typography';
+@use 'components/custom';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
