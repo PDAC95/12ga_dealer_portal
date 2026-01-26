@@ -1,47 +1,67 @@
 import { FC, useEffect, useState } from 'react';
 import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 import { useAuthStore } from '@/store/authStore';
+import { apiClient } from '@/lib/axios';
 import { HorizontalLoginBar } from '../components/HorizontalLoginBar';
 import { ImageSlider } from '../components/ImageSlider';
 
-// Placeholder images - will be loaded from /api/marketing/images when available
-const PLACEHOLDER_IMAGES = [
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/bad-ass-custom-kenworth-w-900-part-1-main',
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/bad-ass-custom-kenworth-w-900-part-2-main',
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/cabover-freightliner-classic-main',
+const CLOUDINARY_BASE = 'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto';
+const LOGO_URL = 'https://res.cloudinary.com/dzwmrurhg/image/upload/v1760465523/logo_ok_qrk7ar.png';
+
+// Fallback images in case API fails
+const FALLBACK_IMAGES = [
+  `${CLOUDINARY_BASE}/twelve-ga-customs/trucks/peterbilt-389-dave-gillis-main`,
+  `${CLOUDINARY_BASE}/twelve-ga-customs/trucks/wes-riley-main`,
+  `${CLOUDINARY_BASE}/twelve-ga-customs/trucks/davis-pete-main`,
 ];
 
-const LOGO_URL = 'https://res.cloudinary.com/dzwmrurhg/image/upload/v1760465523/logo_ok_qrk7ar.png';
+interface Truck {
+  _id: string;
+  image: string;
+  title: string;
+}
 
 export const LoginPage: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [searchParams] = useSearchParams();
   const { isAuthenticated, setDealer } = useAuthStore();
-  const [images] = useState<string[]>(PLACEHOLDER_IMAGES);
+  const [images, setImages] = useState<string[]>(FALLBACK_IMAGES);
   const [isLoginExpanded, setIsLoginExpanded] = useState(false);
 
-  // Si ya está autenticado, redirigir al dashboard
+  // Redirect if already authenticated
   useEffect(() => {
     if (isAuthenticated) {
       navigate('/dashboard', { replace: true });
     }
   }, [isAuthenticated, navigate]);
 
-  // TODO: Cargar imágenes del backend cuando esté disponible
-  // useEffect(() => {
-  //   const loadImages = async () => {
-  //     try {
-  //       const response = await apiClient.get('/api/marketing/images');
-  //       if (response.data.success && response.data.data.length > 0) {
-  //         setImages(response.data.data.map((img: any) => img.imageUrl));
-  //       }
-  //     } catch (error) {
-  //       console.error('Error loading images:', error);
-  //     }
-  //   };
-  //   loadImages();
-  // }, []);
+  // Load featured trucks from API
+  useEffect(() => {
+    const loadFeaturedTrucks = async () => {
+      try {
+        const response = await apiClient.get('/api/trucks', {
+          params: { featured: true, limit: 10 },
+        });
+
+        if (response.data.success && response.data.data.length > 0) {
+          const truckImages = response.data.data.map((truck: Truck) => {
+            // Build full Cloudinary URL from image path
+            const imagePath = truck.image.startsWith('http')
+              ? truck.image
+              : `${CLOUDINARY_BASE}/${truck.image}`;
+            return imagePath;
+          });
+          setImages(truckImages);
+        }
+      } catch (error) {
+        console.error('Error loading featured trucks:', error);
+        // Keep fallback images on error
+      }
+    };
+
+    loadFeaturedTrucks();
+  }, []);
 
   // Manejar callback de Google OAuth
   useEffect(() => {
