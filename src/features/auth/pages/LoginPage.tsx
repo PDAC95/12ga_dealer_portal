@@ -4,12 +4,11 @@ import { useAuthStore } from '@/store/authStore';
 import { HorizontalLoginBar } from '../components/HorizontalLoginBar';
 import { ImageSlider } from '../components/ImageSlider';
 
-// Imágenes de placeholder mientras se conecta el backend
-// Estas vendrán de /api/marketing/images
+// Placeholder images - will be loaded from /api/marketing/images when available
 const PLACEHOLDER_IMAGES = [
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/v1737781200/12ga/trucks/truck1.jpg',
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/v1737781200/12ga/trucks/truck2.jpg',
-  'https://res.cloudinary.com/dzwmrurhg/image/upload/v1737781200/12ga/trucks/truck3.jpg',
+  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/bad-ass-custom-kenworth-w-900-part-1-main',
+  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/bad-ass-custom-kenworth-w-900-part-2-main',
+  'https://res.cloudinary.com/dzwmrurhg/image/upload/w_1920,h_1080,c_fill,f_auto,q_auto/twelve-ga-customs/trucks/cabover-freightliner-classic-main',
 ];
 
 const LOGO_URL = 'https://res.cloudinary.com/dzwmrurhg/image/upload/v1760465523/logo_ok_qrk7ar.png';
