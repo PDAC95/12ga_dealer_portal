@@ -3,12 +3,12 @@ import { z } from 'zod';
 export const loginSchema = z.object({
   email: z
     .string()
-    .min(1, 'El email es requerido')
-    .email('Ingresa un email válido'),
+    .min(1, 'Email is required')
+    .email('Please enter a valid email'),
   password: z
     .string()
-    .min(1, 'La contraseña es requerida')
-    .min(6, 'La contraseña debe tener al menos 6 caracteres'),
+    .min(1, 'Password is required')
+    .min(6, 'Password must be at least 6 characters'),
   rememberMe: z.boolean().default(false),
 });
 
@@ -17,8 +17,8 @@ export type LoginFormData = z.infer<typeof loginSchema>;
 export const forgotPasswordSchema = z.object({
   email: z
     .string()
-    .min(1, 'El email es requerido')
-    .email('Ingresa un email válido'),
+    .min(1, 'Email is required')
+    .email('Please enter a valid email'),
 });
 
 export type ForgotPasswordFormData = z.infer<typeof forgotPasswordSchema>;
@@ -27,16 +27,16 @@ export const resetPasswordSchema = z
   .object({
     password: z
       .string()
-      .min(1, 'La contraseña es requerida')
-      .min(8, 'La contraseña debe tener al menos 8 caracteres')
+      .min(1, 'Password is required')
+      .min(8, 'Password must be at least 8 characters')
       .regex(
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-        'Debe contener mayúscula, minúscula y número'
+        'Must contain uppercase, lowercase and number'
       ),
-    confirmPassword: z.string().min(1, 'Confirma tu contraseña'),
+    confirmPassword: z.string().min(1, 'Please confirm your password'),
   })
   .refine((data) => data.password === data.confirmPassword, {
-    message: 'Las contraseñas no coinciden',
+    message: 'Passwords do not match',
     path: ['confirmPassword'],
   });
 

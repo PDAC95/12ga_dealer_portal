@@ -63,7 +63,7 @@ export const LoginPage: FC = () => {
     loadFeaturedTrucks();
   }, []);
 
-  // Manejar callback de Google OAuth
+  // Handle Google OAuth callback
   useEffect(() => {
     const token = searchParams.get('token');
     const dealerData = searchParams.get('dealer');
@@ -79,7 +79,7 @@ export const LoginPage: FC = () => {
     }
   }, [searchParams, setDealer, navigate]);
 
-  // Mensaje de éxito de reset password
+  // Password reset success message
   const successMessage = (location.state as { message?: string })?.message;
 
   return (

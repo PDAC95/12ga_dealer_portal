@@ -1,2 +1,2 @@
-// Dashboard feature exports
-// Components, hooks, services, and types will be exported here as they are created
+export { DashboardPage } from './pages/DashboardPage';
+export { WelcomeCard, NavigationCard } from './components';

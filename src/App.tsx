@@ -1,5 +1,6 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
+import { Routes, Route, Navigate, Outlet } from 'react-router-dom';
 import { useAuthStore } from './store/authStore';
+import { MainLayout } from './shared/components/layout';
 
 // Auth Pages
 import {
@@ -8,11 +9,19 @@ import {
   ResetPasswordPage,
 } from './features/auth';
 
-// Placeholder pages - will be replaced with actual pages
-const DashboardPage = () => (
-  <div className="min-h-screen bg-background p-4">
-    <h1 className="text-2xl font-bold text-white">Dashboard</h1>
-    <p className="text-muted mt-2">Welcome to 12GA Dealer Portal</p>
+// Dashboard
+import { DashboardPage } from './features/dashboard';
+
+// Products
+import { ProductsPage, ProductDetailPage } from './features/products';
+
+// Chat
+import { ChatPage } from './features/chat';
+
+const GalleryPage = () => (
+  <div className="py-4">
+    <h1 className="text-2xl font-bold text-white">Marketing Gallery</h1>
+    <p className="text-muted mt-2">Image gallery coming soon...</p>
   </div>
 );
 
@@ -67,15 +76,22 @@ function App() {
         }
       />
 
-      {/* Protected Routes */}
+      {/* Protected Routes with MainLayout */}
       <Route
-        path="/dashboard"
         element={
           <ProtectedRoute>
-            <DashboardPage />
+            <MainLayout>
+              <Outlet />
+            </MainLayout>
           </ProtectedRoute>
         }
-      />
+      >
+        <Route path="/dashboard" element={<DashboardPage />} />
+        <Route path="/products" element={<ProductsPage />} />
+        <Route path="/products/:slug" element={<ProductDetailPage />} />
+        <Route path="/chat" element={<ChatPage />} />
+        <Route path="/gallery" element={<GalleryPage />} />
+      </Route>
 
       {/* Redirects */}
       <Route path="/" element={<Navigate to="/login" replace />} />

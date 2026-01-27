@@ -37,7 +37,7 @@ export const ForgotPasswordForm: FC = () => {
     const axiosError = forgotPasswordMutation.error as AxiosError<AuthError>;
     return (
       axiosError.response?.data?.error?.message ||
-      'Error al enviar email. Intenta de nuevo.'
+      'Error sending email. Please try again.'
     );
   };
 
@@ -47,9 +47,9 @@ export const ForgotPasswordForm: FC = () => {
         <div className="w-16 h-16 bg-green-500/10 rounded-full flex items-center justify-center mx-auto">
           <CheckCircle className="w-8 h-8 text-green-500" />
         </div>
-        <h2 className="text-xl font-semibold text-white">Email enviado</h2>
+        <h2 className="text-xl font-semibold text-white">Email sent</h2>
         <p className="text-muted">
-          Hemos enviado instrucciones para restablecer tu contraseña a{' '}
+          We have sent password reset instructions to{' '}
           <span className="text-white">{getValues('email')}</span>
         </p>
         <Link
@@ -57,7 +57,7 @@ export const ForgotPasswordForm: FC = () => {
           className="inline-flex items-center gap-2 text-primary hover:text-primary-hover transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver al login
+          Back to login
         </Link>
       </div>
     );
@@ -67,10 +67,10 @@ export const ForgotPasswordForm: FC = () => {
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div className="text-center space-y-2 mb-6">
         <h2 className="text-xl font-semibold text-white">
-          Recuperar contraseña
+          Recover password
         </h2>
         <p className="text-muted text-sm">
-          Ingresa tu email y te enviaremos instrucciones
+          Enter your email and we'll send you instructions
         </p>
       </div>
 
@@ -103,7 +103,7 @@ export const ForgotPasswordForm: FC = () => {
         size="lg"
         isLoading={forgotPasswordMutation.isPending}
       >
-        Enviar instrucciones
+        Send instructions
       </Button>
 
       {/* Back to Login */}
@@ -113,7 +113,7 @@ export const ForgotPasswordForm: FC = () => {
           className="inline-flex items-center gap-2 text-muted hover:text-white transition-colors"
         >
           <ArrowLeft className="w-4 h-4" />
-          Volver al login
+          Back to login
         </Link>
       </div>
     </form>

@@ -18,7 +18,7 @@ const AUTH_ENDPOINTS = {
 
 export const authService = {
   /**
-   * Login con email y password
+   * Login with email and password
    */
   login: async (credentials: LoginCredentials): Promise<LoginResponse> => {
     const { data } = await apiClient.post<LoginResponse>(
@@ -29,7 +29,7 @@ export const authService = {
   },
 
   /**
-   * Solicitar reset de contraseña
+   * Request password reset
    */
   forgotPassword: async (
     payload: ForgotPasswordRequest
@@ -42,7 +42,7 @@ export const authService = {
   },
 
   /**
-   * Resetear contraseña con token
+   * Reset password with token
    */
   resetPassword: async (
     payload: ResetPasswordRequest
@@ -55,7 +55,7 @@ export const authService = {
   },
 
   /**
-   * Obtener URL de autenticación Google
+   * Get Google authentication URL
    */
   getGoogleAuthUrl: (): string => {
     const baseUrl = import.meta.env.VITE_API_URL;
@@ -63,7 +63,7 @@ export const authService = {
   },
 
   /**
-   * Verificar sesión actual
+   * Verify current session
    */
   verifySession: async () => {
     const { data } = await apiClient.get(AUTH_ENDPOINTS.PROFILE);
