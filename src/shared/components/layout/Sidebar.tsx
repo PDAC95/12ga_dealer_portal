@@ -2,7 +2,7 @@ import { FC } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import {
   Home,
-  Image,
+  FolderOpen,
   Package,
   MessageCircle,
   ChevronLeft,
@@ -23,7 +23,7 @@ const navItems: NavItem[] = [
   { to: '/dashboard', icon: Home, label: 'HOME' },
   { to: '/products', icon: Package, label: 'PRODUCTS' },
   { to: '/chat', icon: MessageCircle, label: 'SUPPORT' },
-  { to: '/gallery', icon: Image, label: 'GALLERY' },
+  { to: '/gallery', icon: FolderOpen, label: 'MEDIA' },
 ];
 
 // Logo URL from Cloudinary

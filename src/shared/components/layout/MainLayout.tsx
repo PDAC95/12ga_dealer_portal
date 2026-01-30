@@ -2,6 +2,8 @@ import { FC, ReactNode, useState } from 'react';
 import { Header } from './Header';
 import { BottomNav } from './BottomNav';
 import { Sidebar } from './Sidebar';
+import { Screensaver } from '../Screensaver';
+import { useUIStore } from '../../../store/uiStore';
 
 interface MainLayoutProps {
   children: ReactNode;
@@ -9,6 +11,7 @@ interface MainLayoutProps {
 
 export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const { screensaver } = useUIStore();
 
   const toggleSidebar = () => {
     setIsSidebarCollapsed((prev) => !prev);
@@ -16,6 +19,12 @@ export const MainLayout: FC<MainLayoutProps> = ({ children }) => {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Screensaver */}
+      <Screensaver
+        timeout={screensaver.timeoutSeconds}
+        enabled={screensaver.enabled}
+      />
+
       {/* Sidebar - visible on desktop */}
       <Sidebar isCollapsed={isSidebarCollapsed} onToggle={toggleSidebar} />
 

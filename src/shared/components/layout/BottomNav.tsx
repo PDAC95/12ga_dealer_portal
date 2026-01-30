@@ -1,6 +1,6 @@
 import { FC, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Home, Image, Package, MessageCircle, Phone, X } from 'lucide-react';
+import { Home, FolderOpen, Package, MessageCircle, Phone, X } from 'lucide-react';
 
 interface NavItem {
   to: string;
@@ -15,7 +15,7 @@ const leftNavItems: NavItem[] = [
 ];
 
 const rightNavItems: NavItem[] = [
-  { to: '/gallery', icon: Image, label: 'Gallery' },
+  { to: '/gallery', icon: FolderOpen, label: 'Media' },
 ];
 
 // Company phone numbers

@@ -18,12 +18,8 @@ import { ProductsPage, ProductDetailPage } from './features/products';
 // Chat
 import { ChatPage } from './features/chat';
 
-const GalleryPage = () => (
-  <div className="py-4">
-    <h1 className="text-2xl font-bold text-white">Marketing Gallery</h1>
-    <p className="text-muted mt-2">Image gallery coming soon...</p>
-  </div>
-);
+// Media
+import { MediaPage } from './features/media';
 
 // Protected Route wrapper
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
@@ -90,7 +86,7 @@ function App() {
         <Route path="/products" element={<ProductsPage />} />
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/chat" element={<ChatPage />} />
-        <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/gallery" element={<MediaPage />} />
       </Route>
 
       {/* Redirects */}
