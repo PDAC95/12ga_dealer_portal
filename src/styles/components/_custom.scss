@@ -3,12 +3,12 @@
 // Custom component styles that can't be easily achieved with Tailwind
 
 .btn-primary {
-  background-color: v.$primary;
-  color: v.$text-white;
+  background-color: var(--color-primary);
+  color: white;
   transition: background-color v.$transition-fast, transform v.$transition-fast;
 
   &:hover {
-    background-color: v.$primary-hover;
+    background-color: var(--color-primary-hover);
   }
 
   &:active {
@@ -22,12 +22,12 @@
 }
 
 .card {
-  background-color: v.$surface;
+  background-color: var(--color-surface);
   border-radius: v.$radius-lg;
   transition: background-color v.$transition-fast;
 
   &:hover {
-    background-color: v.$surface-hover;
+    background-color: var(--color-surface-hover);
   }
 }
 
@@ -38,20 +38,20 @@
 }
 
 ::-webkit-scrollbar-track {
-  background: v.$background;
+  background: var(--color-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: v.$surface-hover;
+  background: var(--color-surface-hover);
   border-radius: 4px;
 
   &:hover {
-    background: v.$text-muted;
+    background: var(--color-text-muted);
   }
 }
 
 // Focus styles
 :focus-visible {
-  outline: 2px solid v.$primary;
+  outline: 2px solid var(--color-primary);
   outline-offset: 2px;
 }

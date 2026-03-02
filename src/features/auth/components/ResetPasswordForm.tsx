@@ -43,7 +43,7 @@ export const ResetPasswordForm: FC = () => {
     const axiosError = resetPasswordMutation.error as AxiosError<AuthError>;
     return (
       axiosError.response?.data?.error?.message ||
-      'Error al restablecer contraseña. El token puede haber expirado.'
+      'Error resetting password. The token may have expired.'
     );
   };
 
@@ -53,16 +53,15 @@ export const ResetPasswordForm: FC = () => {
         <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mx-auto">
           <AlertCircle className="w-8 h-8 text-red-500" />
         </div>
-        <h2 className="text-xl font-semibold text-white">Token inválido</h2>
+        <h2 className="text-xl font-semibold text-white">Invalid token</h2>
         <p className="text-muted">
-          El enlace de recuperación es inválido o ha expirado. Por favor,
-          solicita uno nuevo.
+          The recovery link is invalid or has expired. Please request a new one.
         </p>
         <Link
           to="/forgot-password"
           className="inline-block text-primary hover:text-primary-hover transition-colors"
         >
-          Solicitar nuevo enlace
+          Request new link
         </Link>
       </div>
     );
@@ -71,8 +70,8 @@ export const ResetPasswordForm: FC = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="space-y-5">
       <div className="text-center space-y-2 mb-6">
-        <h2 className="text-xl font-semibold text-white">Nueva contraseña</h2>
-        <p className="text-muted text-sm">Ingresa tu nueva contraseña</p>
+        <h2 className="text-xl font-semibold text-white">New password</h2>
+        <p className="text-muted text-sm">Enter your new password</p>
       </div>
 
       {/* Password Field */}
@@ -83,7 +82,7 @@ export const ResetPasswordForm: FC = () => {
         <Input
           {...register('password')}
           type={showPassword ? 'text' : 'password'}
-          placeholder="Nueva contraseña"
+          placeholder="New password"
           className="pl-11 pr-11"
           error={errors.password?.message}
         />
@@ -108,7 +107,7 @@ export const ResetPasswordForm: FC = () => {
         <Input
           {...register('confirmPassword')}
           type={showConfirmPassword ? 'text' : 'password'}
-          placeholder="Confirmar contraseña"
+          placeholder="Confirm password"
           className="pl-11 pr-11"
           error={errors.confirmPassword?.message}
         />
@@ -127,8 +126,8 @@ export const ResetPasswordForm: FC = () => {
 
       {/* Password Requirements */}
       <p className="text-xs text-muted">
-        La contraseña debe tener al menos 8 caracteres, una mayúscula, una
-        minúscula y un número.
+        Password must be at least 8 characters, with one uppercase letter, one
+        lowercase letter and one number.
       </p>
 
       {/* Error Message */}
@@ -145,7 +144,7 @@ export const ResetPasswordForm: FC = () => {
         size="lg"
         isLoading={resetPasswordMutation.isPending}
       >
-        Restablecer contraseña
+        Reset password
       </Button>
     </form>
   );

@@ -20,13 +20,13 @@ export const useLogin = () => {
     onSuccess: (response, variables) => {
       const { dealer, token } = response.data;
 
-      // Guardar preferencia de remember me
+      // Save remember me preference
       setRememberMe(variables.rememberMe);
 
-      // Guardar dealer y token en el store
+      // Save dealer and token in store
       setDealer(dealer, token);
 
-      // Redirigir al dashboard
+      // Redirect to dashboard
       navigate('/dashboard');
     },
     onError: (error: AxiosError<AuthError>) => {
@@ -56,7 +56,7 @@ export const useResetPassword = () => {
       authService.resetPassword(payload),
     onSuccess: () => {
       navigate('/login', {
-        state: { message: 'Contraseña actualizada exitosamente' },
+        state: { message: 'Password updated successfully' },
       });
     },
     onError: (error: AxiosError<AuthError>) => {

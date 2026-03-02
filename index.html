@@ -2,15 +2,30 @@
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="https://res.cloudinary.com/dzwmrurhg/image/upload/w_32,h_32,c_fit/v1767629522/12-Ga-no-V-Logo_axzh7o.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="https://res.cloudinary.com/dzwmrurhg/image/upload/w_16,h_16,c_fit/v1767629522/12-Ga-no-V-Logo_axzh7o.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="https://res.cloudinary.com/dzwmrurhg/image/upload/w_180,h_180,c_fit/v1767629522/12-Ga-no-V-Logo_axzh7o.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
     <meta name="theme-color" content="#ff3d24" />
     <meta name="description" content="Portal para distribuidores autorizados de 12GA Customs" />
-    <link rel="apple-touch-icon" href="/icons/icon-192x192.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <title>12GA Dealer Portal</title>
+    <script>
+      // Anti-flash: Apply theme before render
+      (function() {
+        try {
+          const stored = localStorage.getItem('theme-storage');
+          if (stored) {
+            const { state } = JSON.parse(stored);
+            if (state && state.theme === 'light') {
+              document.documentElement.setAttribute('data-theme', 'light');
+            }
+          }
+        } catch (e) {}
+      })();
+    </script>
   </head>
   <body>
     <div id="root"></div>

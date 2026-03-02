@@ -41,7 +41,7 @@ export const LoginForm: FC<LoginFormProps> = ({ variant = 'default' }) => {
     const axiosError = loginMutation.error as AxiosError<AuthError>;
     return (
       axiosError.response?.data?.error?.message ||
-      'Error al iniciar sesión. Intenta de nuevo.'
+      'Login failed. Please try again.'
     );
   };
 
@@ -82,7 +82,7 @@ export const LoginForm: FC<LoginFormProps> = ({ variant = 'default' }) => {
         <input
           {...register('password')}
           type={showPassword ? 'text' : 'password'}
-          placeholder="Contraseña"
+          placeholder="Password"
           className={`${inputWithErrorClasses} ${errors.password ? 'border-red-500' : ''}`}
           autoComplete="current-password"
         />
@@ -111,14 +111,14 @@ export const LoginForm: FC<LoginFormProps> = ({ variant = 'default' }) => {
             className="w-4 h-4 rounded border-white/30 bg-white/10 text-primary focus:ring-primary focus:ring-offset-0"
           />
           <span className={`text-sm ${isGlass ? 'text-white/70 group-hover:text-white' : 'text-muted group-hover:text-white'} transition-colors`}>
-            Recordarme
+            Remember me
           </span>
         </label>
         <Link
           to="/forgot-password"
           className={`text-sm ${isGlass ? 'text-white/70 hover:text-white' : 'text-primary hover:text-primary-hover'} transition-colors`}
         >
-          ¿Olvidaste tu contraseña?
+          Forgot password?
         </Link>
       </div>
 
@@ -137,7 +137,7 @@ export const LoginForm: FC<LoginFormProps> = ({ variant = 'default' }) => {
         isLoading={loginMutation.isPending}
         className={isGlass ? 'bg-primary hover:bg-primary-hover shadow-lg shadow-primary/25' : ''}
       >
-        Iniciar Sesión
+        Sign In
       </Button>
 
       {/* Divider */}

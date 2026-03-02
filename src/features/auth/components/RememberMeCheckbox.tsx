@@ -21,7 +21,7 @@ export const RememberMeCheckbox = forwardRef<
         </div>
       </div>
       <span className="text-sm text-muted group-hover:text-white transition-colors select-none">
-        Recordarme por 30 días
+        Remember me for 30 days
       </span>
     </label>
   );
