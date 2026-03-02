@@ -92,8 +92,8 @@ export const ChatWindow: FC<ChatWindowProps> = ({
   }
 
   return (
-    <div className="flex-1 overflow-y-auto px-4 py-4">
-      <div className="max-w-2xl mx-auto">
+    <div className="flex-1 overflow-y-auto px-4 lg:px-8 py-4">
+      <div className="w-full max-w-4xl mx-auto flex flex-col">
         {messages.map((message, index) => (
           <MessageBubble
             key={message.id}

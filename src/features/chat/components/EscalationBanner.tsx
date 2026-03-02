@@ -83,7 +83,7 @@ export const EscalationBanner: FC<EscalationBannerProps> = ({
               </>
             ) : (
               <>
-                <span>Talk to Human</span>
+                <span>Talk to Specialist</span>
                 <ArrowRight className="w-4 h-4" />
               </>
             )}

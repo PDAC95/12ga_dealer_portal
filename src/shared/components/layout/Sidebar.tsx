@@ -9,8 +9,12 @@ import {
   ChevronRight,
   LogOut,
   Zap,
+  Sun,
+  Moon,
+  Settings,
 } from 'lucide-react';
 import { useAuthStore } from '@/store';
+import { useThemeStore } from '@/store/themeStore';
 
 interface NavItem {
   to: string;
@@ -24,6 +28,7 @@ const navItems: NavItem[] = [
   { to: '/products', icon: Package, label: 'PRODUCTS' },
   { to: '/chat', icon: MessageCircle, label: 'SUPPORT' },
   { to: '/gallery', icon: FolderOpen, label: 'MEDIA' },
+  { to: '/settings', icon: Settings, label: 'SETTINGS' },
 ];
 
 // Logo URL from Cloudinary
@@ -37,7 +42,9 @@ interface SidebarProps {
 
 export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
   const { dealer, logout } = useAuthStore();
+  const { theme, toggleTheme } = useThemeStore();
   const location = useLocation();
+  const isDark = theme === 'dark';
 
   return (
     <aside
@@ -46,7 +53,7 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
       }`}
     >
       {/* Industrial background with texture effect */}
-      <div className="absolute inset-0 bg-[#0a0a0a]" />
+      <div className="absolute inset-0 bg-background" />
 
       {/* Diagonal stripes pattern (hazard style) */}
       <div
@@ -80,10 +87,10 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
         {!isCollapsed && (
           <div className="px-5 pt-6 pb-3 flex items-center gap-2">
             <div className="h-[2px] w-3 bg-primary" />
-            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/40">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-text-secondary">
               Navigation
             </span>
-            <div className="h-[2px] flex-1 bg-white/10" />
+            <div className="h-[2px] flex-1 bg-border" />
           </div>
         )}
 
@@ -102,7 +109,7 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
                     } ${
                       isActive
                         ? 'bg-primary text-white'
-                        : 'text-white/60 hover:text-white hover:bg-white/5'
+                        : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
                     }`}
                     style={{
                       clipPath: isCollapsed
@@ -113,7 +120,7 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
                   >
                     {/* Hover highlight line */}
                     <div className={`absolute left-0 top-0 bottom-0 w-[3px] transition-all duration-150 ${
-                      isActive ? 'bg-white' : 'bg-transparent group-hover:bg-primary'
+                      isActive ? 'bg-text-primary' : 'bg-transparent group-hover:bg-primary'
                     }`} />
 
                     <Icon className={`w-5 h-5 shrink-0 ${isActive ? 'drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]' : ''}`} />
@@ -122,7 +129,7 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
                       <>
                         <span className="font-bold text-xs tracking-wider">{label}</span>
                         {badge && (
-                          <span className="ml-auto px-2 py-0.5 text-[9px] font-black uppercase tracking-wider bg-white text-primary flex items-center gap-1">
+                          <span className="ml-auto px-2 py-0.5 text-[9px] font-black uppercase tracking-wider bg-surface text-primary flex items-center gap-1">
                             <Zap className="w-3 h-3" />
                             {badge}
                           </span>
@@ -147,11 +154,11 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
             {/* User info */}
             <div className={`${isCollapsed ? 'flex justify-center' : 'mb-3'}`}>
               {!isCollapsed ? (
-                <div className="bg-white/5 border-l-2 border-primary p-3">
-                  <p className="text-xs font-bold uppercase tracking-wider text-white truncate">
+                <div className="bg-surface-hover border-l-2 border-primary p-3">
+                  <p className="text-xs font-bold uppercase tracking-wider text-text-primary truncate">
                     {dealer.companyName}
                   </p>
-                  <p className="text-[10px] text-white/40 uppercase tracking-wide truncate mt-1">
+                  <p className="text-[10px] text-text-secondary uppercase tracking-wide truncate mt-1">
                     {dealer.contactName}
                   </p>
                 </div>
@@ -164,10 +171,26 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
               )}
             </div>
 
+            {/* Theme Toggle */}
+            <button
+              onClick={toggleTheme}
+              className={`group flex items-center gap-3 w-full text-text-secondary hover:text-primary hover:bg-primary/10 transition-all duration-150 ${
+                isCollapsed ? 'justify-center p-3' : 'px-4 py-2'
+              }`}
+              title={isCollapsed ? (isDark ? 'Light Mode' : 'Dark Mode') : undefined}
+            >
+              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {!isCollapsed && (
+                <span className="text-xs font-bold uppercase tracking-wider">
+                  {isDark ? 'Light Mode' : 'Dark Mode'}
+                </span>
+              )}
+            </button>
+
             {/* Logout */}
             <button
               onClick={logout}
-              className={`group flex items-center gap-3 w-full text-white/40 hover:text-primary hover:bg-primary/10 transition-all duration-150 ${
+              className={`group flex items-center gap-3 w-full text-text-secondary hover:text-primary hover:bg-primary/10 transition-all duration-150 ${
                 isCollapsed ? 'justify-center p-3' : 'px-4 py-2'
               }`}
               title={isCollapsed ? 'Logout' : undefined}

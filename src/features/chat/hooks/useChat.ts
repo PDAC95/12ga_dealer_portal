@@ -15,6 +15,7 @@ export const useChat = () => {
   const [messages, setMessages] = useState<LocalMessage[]>([]);
   const [sessionId, setSessionId] = useState<string | null>(null);
   const [isTyping, setIsTyping] = useState(false);
+  const [lastTicket, setLastTicket] = useState<{ ticketNumber: string; status: string } | null>(null);
 
   // Send message mutation
   const sendMessageMutation = useMutation({
@@ -70,13 +71,18 @@ export const useChat = () => {
   // Escalate mutation
   const escalateMutation = useMutation({
     mutationFn: (request: EscalateRequest) => chatService.escalate(request),
-    onSuccess: () => {
-      // Add system message about escalation
+    onSuccess: (response) => {
+      // Store ticket info
+      setLastTicket({
+        ticketNumber: response.data.ticketNumber,
+        status: response.data.status,
+      });
+
+      // Add system message about escalation with ticket number
       const systemMessage: LocalMessage = {
         id: generateId(),
         role: 'system',
-        content:
-          'Your conversation has been escalated to our support team. A representative will respond shortly.',
+        content: `Ticket #${response.data.ticketNumber} created. A specialist will respond within ${response.data.estimatedResponse}.`,
         timestamp: new Date(),
       };
       setMessages((prev) => [...prev, systemMessage]);
@@ -99,10 +105,9 @@ export const useChat = () => {
   // Escalate to human support
   const escalateToHuman = useCallback(
     (reason: string) => {
-      if (!sessionId) return;
-      escalateMutation.mutate({ sessionId, reason });
+      escalateMutation.mutate({ reason });
     },
-    [sessionId, escalateMutation]
+    [escalateMutation]
   );
 
   // Clear chat
@@ -133,6 +138,7 @@ export const useChat = () => {
     isPending: sendMessageMutation.isPending,
     isEscalating: escalateMutation.isPending,
     isEscalated: escalateMutation.isSuccess,
+    lastTicket,
     sendMessage,
     escalateToHuman,
     clearChat,

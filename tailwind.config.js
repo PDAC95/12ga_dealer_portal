@@ -7,15 +7,26 @@ export default {
   theme: {
     extend: {
       colors: {
-        primary: '#ff3d24',
-        'primary-hover': '#e63520',
-        background: '#0d0d0d',
-        surface: '#1a1a1a',
-        'surface-hover': '#252525',
-        muted: '#888888',
+        primary: 'var(--color-primary)',
+        'primary-hover': 'var(--color-primary-hover)',
+        background: 'var(--color-background)',
+        surface: 'var(--color-surface)',
+        'surface-hover': 'var(--color-surface-hover)',
+        muted: 'var(--color-text-muted)',
+        'text-primary': 'var(--color-text-primary)',
+        'text-secondary': 'var(--color-text-secondary)',
+        border: 'var(--color-border)',
+        success: 'var(--color-success)',
+        error: 'var(--color-error)',
+        warning: 'var(--color-warning)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
+      },
+      boxShadow: {
+        'theme-sm': 'var(--shadow-sm)',
+        'theme-md': 'var(--shadow-md)',
+        'theme-lg': 'var(--shadow-lg)',
       },
     },
   },

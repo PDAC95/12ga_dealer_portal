@@ -15,7 +15,7 @@ export const Header: FC<HeaderProps> = ({ className = '' }) => {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 h-16 bg-surface border-b border-gray-800 z-40 ${className}`}
+      className={`fixed top-0 left-0 right-0 h-16 bg-surface border-b border-border z-40 ${className}`}
     >
       <div className="flex items-center justify-between h-full px-4">
         <div className="flex items-center gap-3">

@@ -162,13 +162,14 @@ export const ChatInput: FC<ChatInputProps> = ({
 
   return (
     <div
-      className={`p-4 lg:px-6 border-t border-white/5 bg-background transition-colors relative ${
+      className={`p-4 lg:px-8 border-t border-white/5 bg-background transition-colors relative ${
         isDragOver ? 'bg-primary/5' : ''
       }`}
       onDragOver={handleDragOver}
       onDragLeave={handleDragLeave}
       onDrop={handleDrop}
     >
+      <div className="w-full max-w-4xl mx-auto">
       {/* Attachments preview */}
       {attachments.length > 0 && (
         <div className="flex gap-2 mb-3 flex-wrap">
@@ -269,6 +270,7 @@ export const ChatInput: FC<ChatInputProps> = ({
       <p className="text-[10px] text-white/20 mt-2 text-center">
         Paste or drop images • Max 4 images
       </p>
+      </div>
     </div>
   );
 };

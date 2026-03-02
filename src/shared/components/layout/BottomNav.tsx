@@ -47,7 +47,7 @@ export const BottomNav: FC = () => {
             onClick={(e) => e.stopPropagation()}
           >
             {/* Phone menu card */}
-            <div className="bg-[#0a0a0a] border-2 border-primary/30 overflow-hidden">
+            <div className="bg-background border-2 border-primary/30 overflow-hidden">
               {/* Header */}
               <div className="bg-primary px-4 py-3 flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -76,10 +76,10 @@ export const BottomNav: FC = () => {
                       <Phone className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                     </div>
                     <div className="text-left">
-                      <p className="text-xs font-bold uppercase tracking-wider text-white/60">
+                      <p className="text-xs font-bold uppercase tracking-wider text-text-secondary">
                         {label}
                       </p>
-                      <p className="text-lg font-bold text-white mt-0.5">
+                      <p className="text-lg font-bold text-text-primary mt-0.5">
                         {number}
                       </p>
                     </div>
@@ -90,7 +90,7 @@ export const BottomNav: FC = () => {
 
             {/* Arrow pointing to phone button */}
             <div className="flex justify-end pr-6">
-              <div className="w-4 h-4 bg-[#0a0a0a] border-r-2 border-b-2 border-primary/30 transform rotate-45 -mt-2" />
+              <div className="w-4 h-4 bg-background border-r-2 border-b-2 border-primary/30 transform rotate-45 -mt-2" />
             </div>
           </div>
         </div>
@@ -99,7 +99,7 @@ export const BottomNav: FC = () => {
       {/* Bottom Navigation */}
       <nav className="fixed bottom-0 left-0 right-0 z-40 lg:hidden">
         {/* Background */}
-        <div className="absolute inset-0 bg-[#0a0a0a]">
+        <div className="absolute inset-0 bg-background">
           {/* Top border accent */}
           <div className="absolute top-0 left-0 right-0 h-[2px] bg-gradient-to-r from-primary/30 via-primary to-primary/30" />
         </div>
@@ -114,7 +114,7 @@ export const BottomNav: FC = () => {
                 to={to}
                 className={({ isActive }) =>
                   `relative flex flex-col items-center justify-center gap-1 py-2 px-3 transition-all ${
-                    isActive ? 'text-primary' : 'text-white/50'
+                    isActive ? 'text-primary' : 'text-text-secondary'
                   }`
                 }
               >
@@ -144,9 +144,9 @@ export const BottomNav: FC = () => {
               to="/chat"
               className="block"
             >
-              <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition-all active:scale-95 border-4 border-[#0a0a0a] ${
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center shadow-xl transition-all active:scale-95 border-4 border-background ${
                 isChatActive
-                  ? 'bg-white shadow-white/30'
+                  ? 'bg-surface shadow-surface/30'
                   : 'bg-primary shadow-primary/50'
               }`}>
                 <MessageCircle className={`w-7 h-7 transition-colors ${isChatActive ? 'text-primary' : 'text-white'}`} />
@@ -167,7 +167,7 @@ export const BottomNav: FC = () => {
                 to={to}
                 className={({ isActive }) =>
                   `relative flex flex-col items-center justify-center gap-1 py-2 px-3 transition-all ${
-                    isActive ? 'text-primary' : 'text-white/50'
+                    isActive ? 'text-primary' : 'text-text-secondary'
                   }`
                 }
               >
@@ -194,7 +194,7 @@ export const BottomNav: FC = () => {
             <button
               onClick={() => setShowPhoneMenu(!showPhoneMenu)}
               className={`relative flex flex-col items-center justify-center gap-1 py-2 px-3 transition-all ${
-                showPhoneMenu ? 'text-primary' : 'text-white/50'
+                showPhoneMenu ? 'text-primary' : 'text-text-secondary'
               }`}
             >
               <div className={`relative ${showPhoneMenu ? 'scale-110' : ''} transition-transform`}>
@@ -214,7 +214,7 @@ export const BottomNav: FC = () => {
         </div>
 
         {/* Safe area for iOS */}
-        <div className="h-safe-area-inset-bottom bg-[#0a0a0a]" />
+        <div className="h-safe-area-inset-bottom bg-background" />
       </nav>
     </>
   );

@@ -21,6 +21,9 @@ import { ChatPage } from './features/chat';
 // Media
 import { MediaPage } from './features/media';
 
+// Settings
+import { SettingsPage } from './features/settings';
+
 // Protected Route wrapper
 const ProtectedRoute = ({ children }: { children: React.ReactNode }) => {
   const { isAuthenticated } = useAuthStore();
@@ -87,6 +90,7 @@ function App() {
         <Route path="/products/:slug" element={<ProductDetailPage />} />
         <Route path="/chat" element={<ChatPage />} />
         <Route path="/gallery" element={<MediaPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
       </Route>
 
       {/* Redirects */}

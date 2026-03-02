@@ -41,18 +41,42 @@ export interface ChatHistoryResponse {
 }
 
 export interface EscalateRequest {
-  sessionId: string;
+  sessionId?: string;
   reason: string;
 }
 
 export interface EscalateResponse {
   success: boolean;
   data: {
-    sessionId: string;
-    status: ChatStatus;
-    escalatedAt: Date;
+    ticketId: string;
+    ticketNumber: string;
+    status: TicketStatus;
+    message: string;
+    estimatedResponse: string;
   };
-  message: string;
+}
+
+// Ticket types
+export type TicketStatus = 'pending' | 'assigned' | 'in_progress' | 'resolved' | 'closed';
+export type TicketPriority = 'low' | 'normal' | 'high' | 'urgent';
+
+export interface EscalationTicket {
+  _id: string;
+  ticketNumber: string;
+  status: TicketStatus;
+  priority: TicketPriority;
+  escalationReason: string;
+  resolution?: {
+    response: string;
+    resolvedAt: Date;
+  };
+  createdAt: Date;
+  resolvedAt?: Date;
+}
+
+export interface TicketListResponse {
+  success: boolean;
+  data: EscalationTicket[];
 }
 
 // Attachment interface for images/files

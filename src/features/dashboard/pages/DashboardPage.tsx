@@ -42,10 +42,10 @@ export const DashboardPage: FC = () => {
             <Bell className="w-5 h-5 text-primary" />
           </div>
           <div>
-            <h2 className="text-lg font-semibold text-white">
+            <h2 className="text-lg font-semibold text-text-primary">
               Announcements
             </h2>
-            <p className="text-xs text-white/40">
+            <p className="text-xs text-text-secondary">
               Latest news and updates from 12GA
             </p>
           </div>

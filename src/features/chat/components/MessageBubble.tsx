@@ -50,7 +50,7 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
   return (
     <>
       <div
-        className={`flex ${isUser ? 'justify-end' : 'justify-start'} ${
+        className={`w-full flex ${isUser ? 'justify-end' : 'justify-start'} ${
           isLastInGroup ? 'mb-4' : 'mb-0.5'
         }`}
       >

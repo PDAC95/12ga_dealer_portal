@@ -30,7 +30,7 @@ export const WelcomeCard: FC = () => {
       <div className="relative p-6">
         <div className="flex items-center gap-5">
           {/* Logo */}
-          <div className="w-16 h-16 bg-white/10 backdrop-blur-sm rounded-2xl flex items-center justify-center p-2 border border-white/10">
+          <div className="w-16 h-16 bg-surface/50 backdrop-blur-sm rounded-2xl flex items-center justify-center p-2 border border-border">
             <img
               src={LOGO}
               alt="12GA"
@@ -41,25 +41,25 @@ export const WelcomeCard: FC = () => {
           {/* Info */}
           <div className="flex-1 min-w-0">
             <div className="flex items-center gap-2">
-              <p className="text-sm text-white/60">Welcome back</p>
+              <p className="text-sm text-text-secondary">Welcome back</p>
               <Zap className="w-4 h-4 text-primary" />
             </div>
-            <h1 className="text-2xl font-bold text-white truncate mt-1">
+            <h1 className="text-2xl font-bold text-text-primary truncate mt-1">
               {dealer.companyName}
             </h1>
-            <p className="text-sm text-white/50 truncate mt-0.5">
+            <p className="text-sm text-text-secondary truncate mt-0.5">
               {dealer.contactName}
             </p>
           </div>
         </div>
 
         {/* Stats or quick info */}
-        <div className="mt-5 pt-4 border-t border-white/10 flex items-center justify-between">
+        <div className="mt-5 pt-4 border-t border-border flex items-center justify-between">
           <div className="flex items-center gap-2">
             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse" />
-            <span className="text-xs text-white/50">Portal Active</span>
+            <span className="text-xs text-text-secondary">Portal Active</span>
           </div>
-          <span className="text-xs text-white/40">Dealer Account</span>
+          <span className="text-xs text-muted">Dealer Account</span>
         </div>
       </div>
     </div>

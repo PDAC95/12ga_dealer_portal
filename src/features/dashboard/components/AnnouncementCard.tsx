@@ -69,7 +69,7 @@ export const AnnouncementCard: FC<AnnouncementCardProps> = ({
             <div className="flex items-start justify-between gap-2">
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
-                  <h3 className="text-base font-semibold text-white line-clamp-1">
+                  <h3 className="text-base font-semibold text-text-primary line-clamp-1">
                     {title}
                   </h3>
                   {isNew && (
@@ -78,17 +78,17 @@ export const AnnouncementCard: FC<AnnouncementCardProps> = ({
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-white/40 mt-1">
+                <p className="text-xs text-muted mt-1">
                   {date}
                 </p>
               </div>
 
               {/* Arrow indicator */}
-              <ChevronRight className="w-5 h-5 text-white/20 group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" />
+              <ChevronRight className="w-5 h-5 text-muted group-hover:text-primary group-hover:translate-x-1 transition-all duration-300 shrink-0 mt-1" />
             </div>
 
             {/* Description */}
-            <p className="text-sm text-white/60 mt-2 line-clamp-2 leading-relaxed">
+            <p className="text-sm text-text-secondary mt-2 line-clamp-2 leading-relaxed">
               {content}
             </p>
           </div>
