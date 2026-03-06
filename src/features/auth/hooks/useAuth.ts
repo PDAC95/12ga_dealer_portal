@@ -2,6 +2,7 @@ import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import { AxiosError } from 'axios';
 import { useAuthStore } from '@/store/authStore';
+import { useThemeStore } from '@/store/themeStore';
 import { authService } from '../services/authService';
 import type {
   LoginCredentials,
@@ -13,6 +14,7 @@ import type {
 export const useLogin = () => {
   const navigate = useNavigate();
   const { setDealer, setRememberMe } = useAuthStore();
+  const { setTheme } = useThemeStore();
 
   return useMutation({
     mutationFn: (credentials: LoginCredentials) =>
@@ -25,6 +27,9 @@ export const useLogin = () => {
 
       // Save dealer and token in store
       setDealer(dealer, token);
+
+      // Default to dark mode on login
+      setTheme('dark');
 
       // Redirect to dashboard
       navigate('/dashboard');
