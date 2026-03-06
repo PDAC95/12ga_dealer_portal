@@ -44,7 +44,7 @@ export const ChatPage: FC = () => {
   return (
     <div className="flex flex-col h-[calc(100vh-9rem)] lg:h-[calc(100vh-4rem)] relative bg-background -mx-4 lg:-mx-8 -mb-20 lg:-mb-4">
       {/* Header */}
-      <div className="relative z-10 px-4 lg:px-6 py-4 border-b border-white/5">
+      <div className="relative z-10 px-4 lg:px-6 py-4 border-b border-border">
         <div className="flex items-center gap-4">
           {/* Avatar */}
           <div className="relative">
@@ -59,8 +59,8 @@ export const ChatPage: FC = () => {
 
           {/* Title & Status */}
           <div className="flex-1">
-            <h1 className="text-lg font-bold text-white">12GA Support</h1>
-            <p className="text-xs text-white/50 mt-0.5">
+            <h1 className="text-lg font-bold text-text-primary">12GA Support</h1>
+            <p className="text-xs text-text-secondary mt-0.5">
               {isEscalated
                 ? 'Connected to support team'
                 : productName
@@ -71,9 +71,9 @@ export const ChatPage: FC = () => {
 
           {/* Session Badge */}
           {sessionId && (
-            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-white/5 rounded-xl border border-white/10">
+            <div className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 bg-surface rounded-xl border border-border">
               <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-              <span className="text-[10px] font-medium text-white/40 uppercase tracking-wider">
+              <span className="text-[10px] font-medium text-muted uppercase tracking-wider">
                 Live
               </span>
             </div>

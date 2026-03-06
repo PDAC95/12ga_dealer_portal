@@ -162,7 +162,7 @@ export const ChatInput: FC<ChatInputProps> = ({
 
   return (
     <div
-      className={`p-4 lg:px-8 border-t border-white/5 bg-background transition-colors relative ${
+      className={`p-4 lg:px-8 border-t border-border bg-background transition-colors relative ${
         isDragOver ? 'bg-primary/5' : ''
       }`}
       onDragOver={handleDragOver}
@@ -176,7 +176,7 @@ export const ChatInput: FC<ChatInputProps> = ({
           {attachments.map((attachment) => (
             <div
               key={attachment.id}
-              className="relative group w-16 h-16 rounded-lg overflow-hidden bg-white/5 border border-white/10"
+              className="relative group w-16 h-16 rounded-lg overflow-hidden bg-surface border border-border"
             >
               <img
                 src={attachment.preview}
@@ -194,7 +194,7 @@ export const ChatInput: FC<ChatInputProps> = ({
           {attachments.length < 4 && (
             <button
               onClick={() => fileInputRef.current?.click()}
-              className="w-16 h-16 rounded-lg border border-dashed border-white/20 flex items-center justify-center text-white/30 hover:text-white/50 hover:border-white/30 transition-colors"
+              className="w-16 h-16 rounded-lg border border-dashed border-border flex items-center justify-center text-muted hover:text-text-secondary hover:border-text-secondary transition-colors"
             >
               <ImageIcon className="w-5 h-5" />
             </button>
@@ -219,8 +219,8 @@ export const ChatInput: FC<ChatInputProps> = ({
           disabled={disabled || attachments.length >= 4}
           className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-colors ${
             attachments.length >= 4
-              ? 'text-white/10 cursor-not-allowed'
-              : 'text-white/40 hover:text-white/70 hover:bg-white/5'
+              ? 'text-muted cursor-not-allowed opacity-30'
+              : 'text-muted hover:text-text-primary hover:bg-surface'
           }`}
           title="Attach image"
         >
@@ -238,7 +238,7 @@ export const ChatInput: FC<ChatInputProps> = ({
         />
 
         {/* Input */}
-        <div className="flex-1 bg-[#1a1a1a] rounded-xl border border-white/10 focus-within:border-white/20 transition-colors">
+        <div className="flex-1 bg-surface rounded-xl border border-border focus-within:border-primary/40 transition-colors">
           <textarea
             ref={textareaRef}
             value={message}
@@ -247,7 +247,7 @@ export const ChatInput: FC<ChatInputProps> = ({
             placeholder={attachments.length > 0 ? 'Add a message...' : placeholder}
             disabled={disabled}
             rows={1}
-            className="w-full bg-transparent text-white placeholder-white/30 resize-none px-4 py-3 focus:outline-none text-sm"
+            className="w-full bg-transparent text-text-primary placeholder-muted resize-none px-4 py-3 focus:outline-none text-sm"
             style={{ maxHeight: '120px' }}
           />
         </div>
@@ -259,7 +259,7 @@ export const ChatInput: FC<ChatInputProps> = ({
           className={`w-10 h-10 rounded-xl flex items-center justify-center shrink-0 transition-all ${
             canSend
               ? 'bg-primary text-white hover:bg-primary/90'
-              : 'bg-white/5 text-white/20'
+              : 'bg-surface text-muted'
           }`}
         >
           <Send className="w-5 h-5" />
@@ -267,7 +267,7 @@ export const ChatInput: FC<ChatInputProps> = ({
       </div>
 
       {/* Helper text */}
-      <p className="text-[10px] text-white/20 mt-2 text-center">
+      <p className="text-[10px] text-muted mt-2 text-center">
         Paste or drop images • Max 4 images
       </p>
       </div>

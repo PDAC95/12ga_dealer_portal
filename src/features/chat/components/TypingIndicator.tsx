@@ -9,12 +9,12 @@ export const TypingIndicator: FC = () => {
       </div>
 
       {/* Typing bubble */}
-      <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-[#1a1a1a]">
+      <div className="px-4 py-3 rounded-2xl rounded-bl-sm bg-surface">
         <div className="flex items-center gap-1.5">
           {/* Animated dots */}
-          <span className="w-2 h-2 bg-white/40 rounded-full animate-bounce [animation-delay:0ms]" />
-          <span className="w-2 h-2 bg-white/40 rounded-full animate-bounce [animation-delay:150ms]" />
-          <span className="w-2 h-2 bg-white/40 rounded-full animate-bounce [animation-delay:300ms]" />
+          <span className="w-2 h-2 bg-muted rounded-full animate-bounce [animation-delay:0ms]" />
+          <span className="w-2 h-2 bg-muted rounded-full animate-bounce [animation-delay:150ms]" />
+          <span className="w-2 h-2 bg-muted rounded-full animate-bounce [animation-delay:300ms]" />
         </div>
       </div>
     </div>

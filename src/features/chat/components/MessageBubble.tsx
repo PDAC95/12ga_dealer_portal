@@ -24,9 +24,9 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
   if (isSystem) {
     return (
       <div className="flex justify-center my-4">
-        <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full">
+        <div className="inline-flex items-center gap-2 px-4 py-2 bg-surface border border-border rounded-full">
           <div className="w-1.5 h-1.5 bg-green-400 rounded-full animate-pulse" />
-          <p className="text-xs font-medium text-white/70">{message.content}</p>
+          <p className="text-xs font-medium text-text-secondary">{message.content}</p>
         </div>
       </div>
     );
@@ -80,7 +80,7 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
                   <button
                     key={attachment.id}
                     onClick={() => setLightboxImage(attachment.preview)}
-                    className="relative group rounded-xl overflow-hidden bg-white/5 hover:opacity-90 transition-opacity"
+                    className="relative group rounded-xl overflow-hidden bg-surface hover:opacity-90 transition-opacity"
                   >
                     <img
                       src={attachment.preview}
@@ -102,7 +102,7 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
                 className={`relative px-4 py-2.5 ${getBubbleRadius()} ${
                   isUser
                     ? 'bg-primary text-white'
-                    : 'bg-[#1a1a1a] text-white/90'
+                    : 'bg-surface text-text-primary'
                 } ${message.isPending ? 'opacity-60' : ''} ${
                   message.isError
                     ? 'bg-red-500/10 border border-red-500/30'
@@ -139,7 +139,7 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
                   isUser ? 'justify-end' : 'justify-start'
                 }`}
               >
-                <span className="text-[10px] text-white/30">
+                <span className="text-[10px] text-muted">
                   {message.timestamp.toLocaleTimeString([], {
                     hour: '2-digit',
                     minute: '2-digit',
@@ -147,11 +147,11 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
                 </span>
 
                 {isUser && !message.isError && !message.isPending && (
-                  <CheckCheck className="w-3 h-3 text-white/40" />
+                  <CheckCheck className="w-3 h-3 text-muted" />
                 )}
 
                 {isUser && message.isPending && (
-                  <Check className="w-3 h-3 text-white/20" />
+                  <Check className="w-3 h-3 text-muted opacity-50" />
                 )}
               </div>
             )}
@@ -161,10 +161,10 @@ export const MessageBubble: FC<MessageBubbleProps> = ({
           {message.isError && onRetry && (
             <button
               onClick={() => onRetry(message.id)}
-              className="p-2 rounded-lg bg-white/5 hover:bg-white/10 transition-colors"
+              className="p-2 rounded-lg bg-surface hover:bg-surface-hover transition-colors"
               title="Retry"
             >
-              <RefreshCw className="w-4 h-4 text-white/50" />
+              <RefreshCw className="w-4 h-4 text-text-secondary" />
             </button>
           )}
         </div>

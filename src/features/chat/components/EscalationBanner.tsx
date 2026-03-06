@@ -50,7 +50,7 @@ export const EscalationBanner: FC<EscalationBannerProps> = ({
 
   return (
     <div className="mx-4 mb-4">
-      <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-white/[0.03] to-white/[0.06] border border-white/10 p-4 group hover:border-primary/30 transition-colors">
+      <div className="relative overflow-hidden rounded-2xl bg-surface border border-border p-4 group hover:border-primary/30 transition-colors">
         <div className="flex items-center justify-between gap-4">
           {/* Left side */}
           <div className="flex items-center gap-4">
@@ -61,10 +61,10 @@ export const EscalationBanner: FC<EscalationBannerProps> = ({
 
             {/* Content */}
             <div>
-              <h4 className="text-sm font-semibold text-white">
+              <h4 className="text-sm font-semibold text-text-primary">
                 Need more help?
               </h4>
-              <p className="text-xs text-white/40 mt-0.5">
+              <p className="text-xs text-muted mt-0.5">
                 Talk to our support team directly
               </p>
             </div>

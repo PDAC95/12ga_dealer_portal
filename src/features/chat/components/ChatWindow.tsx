@@ -53,13 +53,13 @@ export const ChatWindow: FC<ChatWindowProps> = ({
       <div className="flex-1 flex flex-col items-center justify-center p-6">
         {/* Hero content */}
         <div className="text-center mb-8">
-          <div className="inline-flex items-center justify-center w-16 h-16 mb-5 rounded-full bg-white/5 border border-white/10">
-            <MessageCircle className="w-8 h-8 text-white/60" />
+          <div className="inline-flex items-center justify-center w-16 h-16 mb-5 rounded-full bg-surface border border-border">
+            <MessageCircle className="w-8 h-8 text-text-secondary" />
           </div>
-          <h2 className="text-xl font-semibold text-white mb-2">
+          <h2 className="text-xl font-semibold text-text-primary mb-2">
             How can we help you?
           </h2>
-          <p className="text-white/40 text-sm max-w-xs mx-auto">
+          <p className="text-muted text-sm max-w-xs mx-auto">
             Ask about 12GA products, specifications, or compatibility.
           </p>
         </div>
@@ -72,17 +72,17 @@ export const ChatWindow: FC<ChatWindowProps> = ({
               <button
                 key={index}
                 onClick={() => onSuggestionClick?.(suggestion.message)}
-                className="group w-full flex items-center gap-3 p-3 bg-[#1a1a1a] rounded-xl hover:bg-[#222] transition-colors"
+                className="group w-full flex items-center gap-3 p-3 bg-surface rounded-xl hover:bg-surface-hover transition-colors"
               >
-                <div className="w-9 h-9 rounded-lg bg-white/5 flex items-center justify-center shrink-0">
-                  <Icon className="w-4 h-4 text-white/50" />
+                <div className="w-9 h-9 rounded-lg bg-border flex items-center justify-center shrink-0">
+                  <Icon className="w-4 h-4 text-text-secondary" />
                 </div>
                 <div className="flex-1 text-left">
-                  <p className="text-sm text-white/80 group-hover:text-white transition-colors">
+                  <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">
                     {suggestion.message}
                   </p>
                 </div>
-                <ChevronRight className="w-4 h-4 text-white/20 group-hover:text-white/40 transition-colors" />
+                <ChevronRight className="w-4 h-4 text-muted group-hover:text-text-secondary transition-colors" />
               </button>
             );
           })}
