@@ -68,15 +68,6 @@ export const useResetPassword = () => {
   });
 };
 
-export const useGoogleAuth = () => {
-  const handleGoogleLogin = () => {
-    const googleAuthUrl = authService.getGoogleAuthUrl();
-    window.location.href = googleAuthUrl;
-  };
-
-  return { handleGoogleLogin };
-};
-
 export const useLogout = () => {
   const { logout } = useAuthStore();
   const queryClient = useQueryClient();

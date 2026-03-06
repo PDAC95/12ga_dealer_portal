@@ -8,7 +8,6 @@ import { AxiosError } from 'axios';
 import { Button } from '@/shared/components/ui';
 import { loginSchema, LoginFormData } from '../schemas/auth.schemas';
 import { useLogin } from '../hooks/useAuth';
-import { SocialLoginButton } from './SocialLoginButton';
 import type { AuthError } from '../types/auth.types';
 
 interface LoginFormProps {
@@ -140,20 +139,6 @@ export const LoginForm: FC<LoginFormProps> = ({ variant = 'default' }) => {
         Sign In
       </Button>
 
-      {/* Divider */}
-      <div className="relative my-4">
-        <div className="absolute inset-0 flex items-center">
-          <div className={`w-full border-t ${isGlass ? 'border-white/20' : 'border-gray-700'}`} />
-        </div>
-        <div className="relative flex justify-center text-sm">
-          <span className={`px-4 ${isGlass ? 'bg-transparent text-white/60' : 'bg-surface text-muted'}`}>
-            o
-          </span>
-        </div>
-      </div>
-
-      {/* Google Login */}
-      <SocialLoginButton provider="google" />
     </form>
   );
 };

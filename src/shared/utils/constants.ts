@@ -27,8 +27,6 @@ export const API_ENDPOINTS = {
     LOGOUT: '/api/dealers/logout',
     FORGOT_PASSWORD: '/api/dealers/forgot-password',
     RESET_PASSWORD: '/api/dealers/reset-password',
-    GOOGLE: '/api/dealers/auth/google',
-    GOOGLE_CALLBACK: '/api/dealers/auth/google/callback',
   },
   MARKETING: {
     IMAGES: '/api/marketing/images',

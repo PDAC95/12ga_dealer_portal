@@ -7,7 +7,6 @@ export { ResetPasswordPage } from './pages/ResetPasswordPage';
 export { LoginForm } from './components/LoginForm';
 export { ForgotPasswordForm } from './components/ForgotPasswordForm';
 export { ResetPasswordForm } from './components/ResetPasswordForm';
-export { SocialLoginButton } from './components/SocialLoginButton';
 export { RememberMeCheckbox } from './components/RememberMeCheckbox';
 export { AuthDivider } from './components/AuthDivider';
 export { ImageSlider } from './components/ImageSlider';
@@ -20,7 +19,6 @@ export {
   useLogout,
   useForgotPassword,
   useResetPassword,
-  useGoogleAuth,
 } from './hooks/useAuth';
 
 // Services

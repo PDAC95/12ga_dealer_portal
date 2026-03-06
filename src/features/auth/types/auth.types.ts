@@ -45,15 +45,6 @@ export interface ResetPasswordResponse {
   message: string;
 }
 
-export interface GoogleAuthResponse {
-  success: true;
-  data: {
-    dealer: IDealer;
-    token: string;
-    isNewUser: boolean;
-  };
-}
-
 export interface AuthError {
   success: false;
   error: {

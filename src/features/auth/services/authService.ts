@@ -12,7 +12,6 @@ const AUTH_ENDPOINTS = {
   LOGIN: '/api/dealers/login',
   FORGOT_PASSWORD: '/api/dealers/forgot-password',
   RESET_PASSWORD: '/api/dealers/reset-password',
-  GOOGLE_AUTH: '/api/dealers/auth/google',
   PROFILE: '/api/dealers/profile',
 };
 
@@ -52,14 +51,6 @@ export const authService = {
       payload
     );
     return data;
-  },
-
-  /**
-   * Get Google authentication URL
-   */
-  getGoogleAuthUrl: (): string => {
-    const baseUrl = import.meta.env.VITE_API_URL;
-    return `${baseUrl}${AUTH_ENDPOINTS.GOOGLE_AUTH}`;
   },
 
   /**

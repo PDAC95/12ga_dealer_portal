@@ -12,6 +12,7 @@ import {
   Sun,
   Moon,
   Settings,
+  Store,
 } from 'lucide-react';
 import { useAuthStore } from '@/store';
 import { useThemeStore } from '@/store/themeStore';
@@ -182,10 +183,26 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
               {!isCollapsed && (
                 <span className="text-xs font-bold uppercase tracking-wider">
-                  {isDark ? 'Light Mode' : 'Dark Mode'}
+                  {isDark ? 'Light' : 'Dark'}
                 </span>
               )}
             </button>
+
+            {/* Back to Store */}
+            <a
+              href="https://12gacustoms.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className={`group flex items-center gap-3 w-full text-text-secondary hover:text-primary hover:bg-primary/10 transition-all duration-150 ${
+                isCollapsed ? 'justify-center p-3' : 'px-4 py-2'
+              }`}
+              title={isCollapsed ? 'Back to Store' : undefined}
+            >
+              <Store className="w-5 h-5" />
+              {!isCollapsed && (
+                <span className="text-xs font-bold uppercase tracking-wider">Back to Store</span>
+              )}
+            </a>
 
             {/* Logout */}
             <button
@@ -197,7 +214,7 @@ export const Sidebar: FC<SidebarProps> = ({ isCollapsed, onToggle }) => {
             >
               <LogOut className="w-5 h-5" />
               {!isCollapsed && (
-                <span className="text-xs font-bold uppercase tracking-wider">Exit</span>
+                <span className="text-xs font-bold uppercase tracking-wider">Logout</span>
               )}
             </button>
           </div>

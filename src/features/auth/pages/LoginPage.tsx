@@ -1,5 +1,5 @@
 import { FC, useEffect, useState } from 'react';
-import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuthStore } from '@/store/authStore';
 import { apiClient } from '@/lib/axios';
 import { HorizontalLoginBar } from '../components/HorizontalLoginBar';
@@ -24,8 +24,7 @@ interface Truck {
 export const LoginPage: FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const [searchParams] = useSearchParams();
-  const { isAuthenticated, setDealer } = useAuthStore();
+  const { isAuthenticated } = useAuthStore();
   const [images, setImages] = useState<string[]>(FALLBACK_IMAGES);
   const [isLoginExpanded, setIsLoginExpanded] = useState(false);
 
@@ -62,22 +61,6 @@ export const LoginPage: FC = () => {
 
     loadFeaturedTrucks();
   }, []);
-
-  // Handle Google OAuth callback
-  useEffect(() => {
-    const token = searchParams.get('token');
-    const dealerData = searchParams.get('dealer');
-
-    if (token && dealerData) {
-      try {
-        const dealer = JSON.parse(decodeURIComponent(dealerData));
-        setDealer(dealer, token);
-        navigate('/dashboard', { replace: true });
-      } catch (error) {
-        console.error('Error parsing OAuth callback data:', error);
-      }
-    }
-  }, [searchParams, setDealer, navigate]);
 
   // Password reset success message
   const successMessage = (location.state as { message?: string })?.message;
