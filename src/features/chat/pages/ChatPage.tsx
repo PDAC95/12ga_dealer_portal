@@ -97,7 +97,6 @@ export const ChatPage: FC = () => {
         messages={messages}
         isTyping={isTyping}
         onRetry={retryMessage}
-        onSuggestionClick={sendMessage}
       />
 
       {/* Chat input */}

@@ -1,45 +1,19 @@
 import { FC, useRef, useEffect } from 'react';
 import { MessageBubble } from './MessageBubble';
 import { TypingIndicator } from './TypingIndicator';
-import { MessageCircle, Package, Truck, Wrench, ChevronRight } from 'lucide-react';
+import { MessageCircle } from 'lucide-react';
 import type { LocalMessage } from '../types/chat.types';
 
 interface ChatWindowProps {
   messages: LocalMessage[];
   isTyping?: boolean;
   onRetry?: (messageId: string) => void;
-  onSuggestionClick?: (message: string) => void;
 }
-
-interface SuggestionItem {
-  icon: FC<{ className?: string }>;
-  title: string;
-  message: string;
-}
-
-const SUGGESTIONS: SuggestionItem[] = [
-  {
-    icon: Package,
-    title: 'Products',
-    message: 'What products do you offer for semi-trucks?',
-  },
-  {
-    icon: Truck,
-    title: 'Compatibility',
-    message: 'How do I check if a part fits my truck?',
-  },
-  {
-    icon: Wrench,
-    title: 'Installation',
-    message: 'Tell me about installation requirements',
-  },
-];
 
 export const ChatWindow: FC<ChatWindowProps> = ({
   messages,
   isTyping = false,
   onRetry,
-  onSuggestionClick,
 }) => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -64,29 +38,10 @@ export const ChatWindow: FC<ChatWindowProps> = ({
           </p>
         </div>
 
-        {/* Suggestion cards */}
-        <div className="w-full max-w-sm space-y-2">
-          {SUGGESTIONS.map((suggestion, index) => {
-            const Icon = suggestion.icon;
-            return (
-              <button
-                key={index}
-                onClick={() => onSuggestionClick?.(suggestion.message)}
-                className="group w-full flex items-center gap-3 p-3 bg-surface rounded-xl hover:bg-surface-hover transition-colors"
-              >
-                <div className="w-9 h-9 rounded-lg bg-border flex items-center justify-center shrink-0">
-                  <Icon className="w-4 h-4 text-text-secondary" />
-                </div>
-                <div className="flex-1 text-left">
-                  <p className="text-sm text-text-secondary group-hover:text-text-primary transition-colors">
-                    {suggestion.message}
-                  </p>
-                </div>
-                <ChevronRight className="w-4 h-4 text-muted group-hover:text-text-secondary transition-colors" />
-              </button>
-            );
-          })}
-        </div>
+        {/* Prompt to type */}
+        <p className="text-muted text-xs mt-2">
+          Type your question below to get started.
+        </p>
       </div>
     );
   }
